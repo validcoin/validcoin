@@ -1,0 +1,260 @@
+[33mcommit fa02d68b325214fff68add54981ada1cc31a5832[m
+Author: validcoin <jordanlessonbiz@gmail.com>
+Date:   Sun Apr 1 15:04:51 2018 -0400
+
+    first commit
+
+[33mcommit 3a6b66e41bd6c239ac0a2f319e88fbd1038881ef[m
+Author: validcoin <jordanlessonbiz@gmail.com>
+Date:   Sun Apr 1 14:59:37 2018 -0400
+
+    first commit
+
+[33mcommit f023a8c20becd70a105534cda3c2c82cdc9adb3b[m
+Author: validcoin <jordanlessonbiz@gmail.com>
+Date:   Sun Apr 1 14:51:34 2018 -0400
+
+    first commit
+
+[33mcommit 9cffb23c2d48d47bb67df78ea1164738b41e8c9d[m
+Author: Warren Togami <wtogami@gmail.com>
+Date:   Mon Jan 12 16:46:39 2015 -1000
+
+    Litecoin v0.8.7.5
+
+[33mcommit fb92215a0924403c7e89ae34ef03aa45a9249792[m
+Author: Warren Togami <wtogami@gmail.com>
+Date:   Mon Jan 12 16:42:03 2015 -1000
+
+    Litecoin: Upgrade to openssl-1.0.1k
+
+[33mcommit af4beb8e700bc5c91978cba7fa1abee71de0d101[m
+Author: Wladimir J. van der Laan <laanwj@gmail.com>
+Date:   Mon Jan 12 11:05:04 2015 +0100
+
+    Improve robustness of DER recoding code
+    
+    Add some defensive programming on top of #5634.
+    
+    This copies the respective OpenSSL code in ECDSA_verify in
+    OpenSSL pre-1.0.1k (e.g. https://github.com/openssl/openssl/blob/OpenSSL_1_0_1j/crypto/ecdsa/ecs_vrf.c#L89)
+    more closely.
+    
+    As reported by @sergiodemianlerner.
+    
+    Bitcoin Github-Pull: #5640
+    Rebased-From: c6b7b29f232c651f898eeffb93f36c8f537c56d2
+
+[33mcommit 95479ca7f635a3343710bcb021c637783ec8d7e1[m
+Author: Cory Fields <cory-nospam-@coryfields.com>
+Date:   Fri Jan 9 20:53:19 2015 -1000
+
+    consensus: guard against openssl's new strict DER checks
+    
+    New versions of OpenSSL will reject non-canonical DER signatures. However,
+    it'll happily decode them. Decode then re-encode before verification in order
+    to ensure that it is properly consumed.
+    
+    Rebased-from: 488ed32f2ada1d1dd108fc245d025c4d5f252783
+    
+    fail immediately on an empty signature
+    
+    Rebased-from: 8dccba6a45db0466370726ed462b9da2eae43bce
+
+[33mcommit c1e46ab3a90bd90b9092761214e841b165d4dbc8[m
+Author: Warren Togami <wtogami@gmail.com>
+Date:   Mon Sep 15 23:50:58 2014 -1000
+
+    Litecoin v0.8.7.4
+
+[33mcommit 52b3c6d66b323969bbd5fdc5886eb57b6c960765[m
+Author: Warren Togami <wtogami@gmail.com>
+Date:   Mon Sep 15 23:48:02 2014 -1000
+
+    Litecoin: Lockin v2 blocks at 710k mainnet, 400k testnet
+
+[33mcommit e77aede12236e7dff5c4e20e7c682c7dd70742c6[m
+Author: Warren Togami <wtogami@gmail.com>
+Date:   Thu Sep 11 15:21:54 2014 -1000
+
+    Litecoin v0.8.7.3
+
+[33mcommit 304477779fd8b146889bb8a358f83c1dbe44998e[m
+Author: Warren Togami <wtogami@gmail.com>
+Date:   Thu Sep 11 15:20:54 2014 -1000
+
+    Litecoin: Release notes for 0.8.7.3
+
+[33mcommit c1d70885c252146f26be1f97cc332aa3850f9032[m
+Author: Warren Togami <wtogami@gmail.com>
+Date:   Tue Sep 9 18:50:48 2014 -1000
+
+    Litecoin: Upgrade to openssl-1.0.1i
+
+[33mcommit ea4717af7449e35654e64e6f03463021ce930d5b[m
+Author: Warren Togami <wtogami@gmail.com>
+Date:   Thu Sep 11 15:06:24 2014 -1000
+
+    Litecoin: Lock in v2 blocks at height 700000
+
+[33mcommit 57ab38f589b9873d1c27b41c8946fea97eb13d2a[m
+Author: Warren Togami <wtogami@gmail.com>
+Date:   Thu Sep 11 14:25:33 2014 -1000
+
+    Litecoin: Checkpoint at block 638902
+
+[33mcommit 5dfe402720013fafa4b6f8f5348a636b834c0f64[m
+Author: Warren Togami <wtogami@gmail.com>
+Date:   Wed Sep 10 20:14:52 2014 -1000
+
+    Litecoin: Reduce DEFAULT_MAX_ORPHAN_TRANSACTIONS to 25
+
+[33mcommit e0199e9ae84265761c2d0c9b5e40c868b6b58822[m
+Author: Gavin Andresen <gavinandresen@gmail.com>
+Date:   Wed Sep 10 14:08:03 2014 -0400
+
+    Store fewer orphan tx by default, add -maxorphantx option
+    
+    There is no reason to store thousands of orphan transactions;
+    normally an orphan's parents will either be broadcast or
+    mined reasonably quickly.
+    
+    This pull drops the maximum number of orphans from 10,000 down
+    to 100, and adds a command-line option (-maxorphantx) that is
+    just like -maxorphanblocks to override the default.
+    
+    Rebased-from: aa3c697e90c02d5797a59a7bfb1ecac6fbd918cf
+
+[33mcommit 056353a2e319f20120ca970c84f53751b4ddb312[m
+Author: Jeff Garzik <jgarzik@bitpay.com>
+Date:   Tue Sep 9 09:26:52 2014 +0200
+
+    Avoid returning many "inv" orphans
+    
+    Rebased-from: 540ac4514dbe4e077917bad1750768218ef5f9cf
+
+[33mcommit 4f7e47a64e79690a564812bfb9efcea0ffcf82c1[m
+Author: Wladimir J. van der Laan <laanwj@gmail.com>
+Date:   Wed Sep 10 04:59:31 2014 -1000
+
+    Limit CNode::mapAskFor
+    
+    Tighten resource constraints on CNode.
+    
+    Rebased-From: d4168c82bef0d86fd254a9d993906a09f5fd7fc0 for 0.8
+
+[33mcommit 826cd8b909cbd0442884f4a003716381037f997f[m
+Author: Gavin Andresen <gavinandresen@gmail.com>
+Date:   Tue Sep 9 14:01:11 2014 -0400
+
+    Fix crashing bug caused by orphan(s) with duplicate prevout.hash
+    
+    Rebased-From: def2fdb
+    Rebased-By: Wladimir J. van der Laan
+
+[33mcommit f8d9593ce076e6e568f896e247d58a0eb7accf86[m
+Author: Wladimir J. van der Laan <laanwj@gmail.com>
+Date:   Mon Sep 8 17:37:26 2014 +0200
+
+    Avoid repeated lookups in mapOrphanTransactions and mapOrphanTransactionsByPrev
+    
+    Rebased-From: 89d91f6
+    Rebased-By: Wladimir J. van der Laan <laanwj@gmail.com>
+
+[33mcommit 85a4b6da554aaad4211e0a8221ab9c95e090989d[m
+Author: Wladimir J. van der Laan <laanwj@gmail.com>
+Date:   Tue Aug 12 07:54:09 2014 +0200
+
+    Don't poll showmyip.com, it doesn't exist anymore
+    
+    Fixes #4679.
+    
+    This leaves us with only one candidate, checkip.dyndns.org.
+    GetMyExternalIP should be phased out as soon as possible.
+    
+    Rebased-from: c33b983903c64d88a2aef24da1827b86aadce596
+
+[33mcommit 91b6a2cd53bb43e69fb54e2cc26aee25c193febe[m
+Author: pooler <pooler@litecoinpool.org>
+Date:   Fri Sep 12 04:23:30 2014 +0200
+
+    Litecoin: update pnSeed array
+
+[33mcommit fab1907372397423e2debb44416385dc53ffd079[m
+Author: Warren Togami <wtogami@gmail.com>
+Date:   Fri Jun 13 11:36:21 2014 -1000
+
+    Litecoin v0.8.7.2
+
+[33mcommit cc924b775c04326e3695d897739d6f791fd76b26[m
+Author: Warren Togami <wtogami@gmail.com>
+Date:   Fri Jun 13 11:28:56 2014 -1000
+
+    Litecoin: Checkpoint at block 585010
+
+[33mcommit dabb4df74564f8837234b7c11049c6bf0476802d[m
+Merge: f91b455 c2cf479
+Author: Warren Togami <wtogami@gmail.com>
+Date:   Fri Jun 13 10:50:25 2014 -1000
+
+    Merge pull request #159 from whitj00/patch-1
+    
+    Changed old bitcoin links
+
+[33mcommit f91b455f5917c0b751897e3afdd435e539694237[m
+Merge: ccd9a1f 73f892b
+Author: Warren Togami <wtogami@gmail.com>
+Date:   Fri Jun 13 10:49:41 2014 -1000
+
+    Merge pull request #162 from linki/fix/openssl-1.0.1h
+    
+    gitian: upgrade to openssl-1.0.1h for CVE-2014-0224
+
+[33mcommit 73f892b5907a41af0800158ac676ede61eaf98ce[m
+Author: Martin Linkhorst <m.linkhorst@gmail.com>
+Date:   Sat Jun 7 18:12:09 2014 +0200
+
+    upgrade to openssl-1.0.1h for CVE-2014-0224
+
+[33mcommit c2cf47946aefa4b799343be39bb740ff0b38c75e[m
+Author: whitj00 <whitj00@users.noreply.github.com>
+Date:   Sat May 31 22:46:20 2014 -0700
+
+    Changed old bitcoin links
+
+[33mcommit ccd9a1f5f72235244886d108f014d40d2d6c7bd5[m
+Author: pooler <pooler@litecoinpool.org>
+Date:   Tue Apr 22 22:37:24 2014 +0200
+
+    Update testnet DNS seeds
+
+[33mcommit aa77ae3a8c31b7bada91e53d451172f01405ce51[m
+Author: Warren Togami <wtogami@gmail.com>
+Date:   Sat Apr 19 01:43:29 2014 -1000
+
+    Litecoin v0.8.7.1
+
+[33mcommit cbe869e15396df1975e08abd32736474b17207b0[m
+Author: Warren Togami <wtogami@gmail.com>
+Date:   Fri Apr 18 20:55:16 2014 -1000
+
+    Revert "RPC: prevent crash with walletpassphrase"
+    
+    This crash seemed to have never happened in 0.8.x, and we are missing the later commit
+    in a8db31c83d6a43e07f741f7f61b1bf0df87621c7 so it seems better to just revert this.
+    
+    This reverts commit 036a69c13c06670b46d3c02cb47e3fc7b2487854.
+
+[33mcommit 9ec7b25cd63e127f75368023078832541d591421[m
+Author: seikochan <j.s.ishigami@gmail.com>
+Date:   Fri Apr 18 14:49:41 2014 -1000
+
+    Litecoin: Update more copyright notices.
+
+[33mcommit 6ce2f0b2fb4d8a58e86919b25d86a917a6f8808f[m
+Author: Warren Togami <wtogami@gmail.com>
+Date:   Wed Apr 9 01:20:21 2014 -1000
+
+    Litecoin v0.8.6.9
+
+[33mcommit 41fa6245259b

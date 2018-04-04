@@ -1,0 +1,9 @@
+Building Validcoin
+
+See doc/readme-qt.rst for instructions on building Validcoin-Qt,
+the intended-for-end-users, nice-graphical-interface, reference
+implementation of Validcoin.
+
+See doc/build-*.txt for instructions on building validcoind,
+the intended-for-services, no-graphical-interface, reference
+implementation of Validcoin.
